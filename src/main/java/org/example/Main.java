@@ -203,16 +203,15 @@ class ChessGame extends AbstractGame{
             }
         }
 
-        // 必須剛好只有一個炮台，才算合法跳吃
         return count == 1;
     }
 
     //吃子規則判定
     private boolean canCapture(Chess actor, Chess target) {
         if (actor.weight == 2) return false; //炮包
-        // 兵(1)吃將(7)
+        // 兵吃將
         if (actor.weight == 1 && target.weight == 7) return true;
-        // 將(7)不能吃兵(1)
+        // 將不能吃兵
         if (actor.weight == 7 && target.weight == 1) return false;
         // 一般情況
         return actor.weight >= target.weight;
